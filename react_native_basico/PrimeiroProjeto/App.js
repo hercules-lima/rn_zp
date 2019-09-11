@@ -1,42 +1,35 @@
 import React, { Component } from 'react';
-import { View, Text, Image } from 'react-native';
-
-class Janta extends Component{
-
-  constructor(props){
-    super(props);
-    this.state = {comida:props.comida};
-    var comidas = ['Pizza', 'Lasanha', 'Burger', 'Sopa', 'Arroz'];
-
-    setInterval(() => {
-        this.setState(previousState => {
-            var n = Math.floor(Math.random() * comidas.length);
-            return {comida: comidas[n]}
-                    });
-    }, 1000);
-  }
-
-  render(){
-
-    return (
-
-        <View>
-          <Text style={{textAlign:'center',fontWeight:'bold', fontSize:20,color:'red'}}>Hoje você vai jantar: </Text>
-          <Text style={{textAlign:'center', fontSize:20}}>{this.state.comida}</Text>
-        </View>
-
-      );
-  }
-
-
-}
+import { View, Text,   StyleSheet } from 'react-native';
 
 export default class PrimeiroProjeto extends Component{
   render(){
     return (
-      <View style={{paddingTop:20}}>
-          <Janta comida='Bolacha'/>
+      <View style={styles.padrao}>
+          <Text style={styles.azulGrande}>Texto 1</Text>
+          <Text style={styles.vermelho}>Texto 2</Text>
+          <Text style={[styles.azulGrande,styles.vermelho]}>Texto 3</Text>
+          <Text style={[styles.vermelho,styles.azulGrande]}>Texto 4</Text>
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  padrao: {
+    paddingTop:20,
+    backgroundColor:'#00FF00'
+  },
+
+  azulGrande: {
+    color:'#0000FF',
+    fontSize:30,
+    textAlign:'center'
+  },
+
+  vermelho: {
+    color:'#FF0000',
+    fontSize:15
+  }
+
+
+});
