@@ -1,35 +1,41 @@
 import React, { Component } from 'react';
 import { View, Text, Image } from 'react-native';
 
-class Imagem extends Component{
+class Janta extends Component{
+
+  constructor(props){
+    super(props);
+    this.state = {comida:props.comida};
+    var comidas = ['Pizza', 'Lasanha', 'Burger', 'Sopa', 'Arroz'];
+
+    setInterval(() => {
+        this.setState(previousState => {
+            var n = Math.floor(Math.random() * comidas.length);
+            return {comida: comidas[n]}
+                    });
+    }, 1000);
+  }
+
   render(){
-    let imagem = {uri:'https://www.google.com.br/logos/'+this.props.nome+'.jpg'}
 
     return (
 
-      <Image source={imagem} style={{width:parseInt(this.props.largura),height:parseInt(this.props.altura)}} />
+        <View>
+          <Text style={{textAlign:'center',fontWeight:'bold', fontSize:20,color:'red'}}>Hoje você vai jantar: </Text>
+          <Text style={{textAlign:'center', fontSize:20}}>{this.state.comida}</Text>
+        </View>
 
-
-      )
-
-
+      );
   }
 
 
 }
 
-
 export default class PrimeiroProjeto extends Component{
   render(){
-    let imagem = {uri:'https://www.google.com.br/logos/google.jpg'}
     return (
-      <View>
-        <Text>Olá Mundo!</Text>
-        <Text style={{fontSize:25,color:'red', margin:20}}>Olá Mundo!</Text>
-
-        <Imagem nome='google' largura='700' altura='200' />
-
-        
+      <View style={{paddingTop:20}}>
+          <Janta comida='Bolacha'/>
       </View>
     );
   }
