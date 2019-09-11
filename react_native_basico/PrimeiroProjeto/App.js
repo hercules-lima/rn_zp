@@ -1,29 +1,15 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { View, Text, Image } from 'react-native';
 
-export default class PrimeiroRNProjeto extends Component{
-
-  somar(n1,n2){
-    return n1 + n2;
-  }
-
+export default class PrimeiroProjeto extends Component{
   render(){
-
+    let imagem = {uri:'https://cdn.theatlantic.com/assets/media/img/mt/2018/11/shutterstock_552503470/lead_720_405.jpg?mod=1541605820'}
     return (
       <View>
-
-        <Text style={styles.texto}>A soma de 10 + 10 é { this.somar(10,10)}</Text>
-
-        <Button title= "Aperte" onPress={() => alert("Fui Apertado!")} ></Button>
-
+        <Text>Olá Mundo!</Text>
+        <Text style={{fontSize:25,color:'red', margin:20}}>Olá Mundo!</Text>
+        <Image source={imagem} style={{width:300,height:300,margin:20}} />
       </View>
     );
   }
-
 }
-
-const styles = StyleSheet.create({
-  texto:{
-    fontSize:30
-  }
-});
